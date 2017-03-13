@@ -57,6 +57,7 @@
 
   var questionTimer;
   var answerTimer;
+
   //Amount of time per question
   var questionTime = 20;
   var currentQuestion = 0;
@@ -80,9 +81,7 @@
   //  The decrement function to count down timer per question.
   function decrement() {
     questionTime--;
-    //  Show the number in the #show-number tag.
     $("#gameTimer").html("<h3>" + questionTime + " seconds</h3>");
-    //  Once number hits zero...
     if (questionTime === 0) {
       stop();
       timeOutAnswer();
@@ -179,7 +178,6 @@
       }
       game.append(questionDiv);
       $("#gameArea").append(game);
-      //console.log(currentQuestion);
     } else {
       finishedGame();
     }
@@ -214,5 +212,3 @@
   $(document).on("click", "#startOver", restart);
 
   $(document).on("click", ".options-btn", answer);
-
-      //alert(questions.question1.options[0]);
