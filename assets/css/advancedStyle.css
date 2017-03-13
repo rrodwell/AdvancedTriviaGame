@@ -1,83 +1,95 @@
 body {
-	background-image: url(../images/bobbydodd.jpg);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-attachment: fixed;
+    background-image: url(../images/bobbydodd.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
 }
 
-.jumbotron{
-	font-family: 'Bangers', cursive;
-	text-align: center;
-	background: rgba(0,0,0,0.70);
-	color: white;
-
+.jumbotron {
+    font-family: 'Bangers', cursive;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.70);
+    color: white;
 }
 
-.mainSection{
-	width: 65%;
-	float: left;
-	margin-top: 15px;
-	border-radius: 10px;
-	text-align: center;
-	background: rgba(0,0,0,0.70);
-	color: white;
+.mainSection {
+    width: 65%;
+    float: left;
+    margin-top: 15px;
+    border-radius: 10px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.70);
+    color: white;
 }
 
-.mainSection h2{
-	font-family: 'Gloria Hallelujah', cursive;
-	font-size: 60px;
-	color: white;
-	margin-bottom: 30px;
-	line-height: 90px;
-	margin-bottom: 50px;
+.mainSection h2 {
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 60px;
+    color: white;
+    margin-bottom: 30px;
+    line-height: 90px;
+    margin-bottom: 50px;
 }
 
-.timeSection{
-	float: right;
-	width: 30%;
-	margin-top: 15px;
-	border-radius: 10px;
-	background: rgba(0,0,0,0.70);
-	color: white;
-	text-align: center;
+.timeSection {
+    float: right;
+    width: 30%;
+    margin-top: 15px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.70);
+    color: white;
+    text-align: center;
 }
 
-.btn-lg{
-	width: 300px;
+.btn-lg {
+    width: 300px;
 }
 
-.btn-danger{
-	margin-bottom: 20px;
+.btn-danger {
+    margin-bottom: 20px;
 }
 
-.btn-default{
-	margin: 10px;
+.btn-default {
+    margin: 10px;
 }
 
-#gameTimer, .game{
-	font-family: 'Roboto', sans-serif;
-	font-size: 30px;
-	margin-bottom: 30px;
+#gameTimer, .game {
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    margin-bottom: 30px;
 }
 
-
-.game p{
-	font-size: 22px;
-}
-.game h3{
-	color: #d9534f;
+.game p {
+    font-size: 22px;
 }
 
-.game h4{
-	font-family: 'Jockey One', sans-serif;
-	font-size: 35px;
-	color: yellow;
+.game h3 {
+    color: #d9534f;
 }
 
-#gameTimer{
-	color: yellow;
+.game h4 {
+    font-family: 'Jockey One', sans-serif;
+    font-size: 35px;
+    color: yellow;
+}
+
+#gameTimer {
+    color: yellow;
 }
 
 #completed {
-	color: #00b359;
+    color: #00b359;
+}
+
+#undefined {
+    color: #0084bf;
+}
+
+#wrong {
+    color: #d9534f;
+}
+
+img {
+    width: 500px;
+    height: 400px
 }

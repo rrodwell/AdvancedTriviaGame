@@ -1,4 +1,3 @@
-$(document).ready(function() {
 
   var questions = [
 
@@ -6,7 +5,7 @@ $(document).ready(function() {
       question: "What year did the Yellow Jackets win the Orange Bowl?",
       options: ["1999","2010","2014","2005"],
       answer: 2,
-      imageUrl: "assets/images/oragebowl.jpg",
+      imageUrl: "assets/images/orangebowl.jpg",
     },
 
     {
@@ -42,6 +41,13 @@ $(document).ready(function() {
       options: ["Orange Bowl","TaxSlayer Bowl","Rose Bowl","SunBowl"],
       answer: 1,
       imageUrl: "assets/images/taxslayer.jpg",
+    },
+
+    {
+      question: "Who is the all-time leading scorer in GaTech history?",
+      options: ["Justin Thomas","Travis Bell","Harrison Butker","Calvin Johnson"],
+      answer: 2,
+      imageUrl: "assets/images/harrisonbutker.jpg",
     }
   ];
 
@@ -52,18 +58,9 @@ $(document).ready(function() {
   var questionTimer;
   var answerTimer;
   //Amount of time per question
-  var questionTime = 300;
-  var currentQuestion = 5;
+  var questionTime = 20;
+  var currentQuestion = 0;
   var userPicks = [];
-
-  //Done button to move onto next screen
-  function renderDoneButton() {
-    var doneButton = $("<a>");
-    doneButton.addClass("btn btn-lg btn-danger");
-    doneButton.text("Done");
-    $("#button").append(doneButton);
-
-  };
 
   //Start over button to reset game
   function renderStartOver() {
@@ -92,58 +89,62 @@ $(document).ready(function() {
     }
   };
 
+  function guessCorrect(guess){
+      var message = $("<div>");
+      message.append("<h3 id='completed'>Correct!</h3>");
+      var rightAnswer = $("<p>");
+      rightAnswer.text("The correct answer was "+ questions[currentQuestion].options[questions[currentQuestion].answer]+"!");
+      message.append(rightAnswer);
+      var answerImg = $("<img>");
+      answerImg.attr("src", questions[currentQuestion].imageUrl);
+      message.append(answerImg);
+      $(".game").append(message);
+      correctAnswer++;
+  };
+
+  function guessWrong(){
+      var message = $("<div>");
+      message.append("<h3 id='wrong'>Sorry, that was the wrong answer...</h3>");
+      var rightAnswer = $("<p>");
+      rightAnswer.text("The correct answer was "+ questions[currentQuestion].options[questions[currentQuestion].answer]+"!");
+      message.append(rightAnswer);
+      var answerImg = $("<img>");
+      answerImg.attr("src", questions[currentQuestion].imageUrl);
+      message.append(answerImg);
+      $(".game").append(message);
+      wrongAnswer++;
+  };
+
+  function guessUndefined(guess){
+      var message = $("<div>");
+      message.append("<h3 id='undefined'>Uh oh! Looks like you ran out of time...</h3>");
+      var rightAnswer = $("<p>");
+      rightAnswer.text("The correct answer was "+ questions[currentQuestion].options[questions[currentQuestion].answer]+"!");
+      message.append(rightAnswer);
+      var answerImg = $("<img>");
+      answerImg.attr("src", questions[currentQuestion].imageUrl);
+      message.append(answerImg);
+      $(".game").append(message);
+      wrongAnswer++;
+  };
+
   function answer(){
     $(".game").empty();
-    $("#button").empty();
-    questionTime = 300;
+    questionTime = 20;
     setTimeout(populatePage, 1000 * 5);
-    //-----------------------------------------
-    //CANT GET THE BUTTON CLICK TO WORK.... I HAVE TRIED IDs, CLASSES, THIS, AND DOCUMENT
-
-    //If button clicked equals the questions.answer
-    //when I click one of the option buttons with the id option-btn
-    $(document).on("click", "options-btn", function(){
-      //get the data-name attr which holds the text of the different choices
-      userGuess = $(this).attr("data-name");
-      console.log(userGuess);
-      //compare the data-name to the answer at answer index within options
-      if (userGuess === questions.options[questions.answer]){
-        console.log("I picked right");
-        //print correct to screen
-        var message = $("<div>");
-        message.append("<h3 id='completed'>Correct!</h3>");
-        //correct answer was ...
-        var rightAnswer = $("<p>");
-        rightAnswer.text("The correct answer was "+ questions.options[questions.amswer]);
-        message.append(rightAnswer);
-        //image
-        var answerImg = $("<img>");
-        //add the src url for the img,
-        // img name is the number of the index of the question, ie. 0.jpg for questions[0] for simplicity
-        answerImg.attr("src", "../images/"+currentQuestion+".jpg");
-        message.append(answerImg);
-
-        $(".game").append(message);
-
-        //add correct
-        correctAnswer++;
-      }
-      //Else if undefinded
-      //print uh oh times up
-      //correct answer
-      //image
-      //add wrong
-    //Else
-      //print oops wrong answer
-      //correct answer was ...
-      //image
-      //add wrong
-    });
-
+    console.log("TADA!");
+    stop();
+    var userGuess = $(this).attr("data-name");
+    console.log(userGuess);
+    if (userGuess === questions[currentQuestion].options[questions[currentQuestion].answer]){
+      guessCorrect(userGuess);
+    } else if(userGuess === undefined) {
+      guessUndefined(userGuess);
+    } else {
+      guessWrong(userGuess);
+    }
     currentQuestion++;
   };
-//-----------------------------------------------------
-
 
   //  The stop function
   function stop() {
@@ -172,40 +173,17 @@ $(document).ready(function() {
       questionDiv.append("<h4>" +questions[currentQuestion].question+"</h4>");
       for (var j = 0; j < questions[currentQuestion].options.length; j++) {
          var inputOptions = $("<button class='btn btn-lg btn-default' data-name='"+questions[currentQuestion].options[j]+"'>");
-         inputOptions.attr("id", "options-btn");
+         inputOptions.addClass("options-btn");
          inputOptions.text(questions[currentQuestion].options[j]+" ");
          questionDiv.append(inputOptions);
       }
       game.append(questionDiv);
       $("#gameArea").append(game);
-      renderDoneButton();
       //console.log(currentQuestion);
     } else {
       finishedGame();
     }
 
-  };
-
-  //Computes score
-  function score() {
-    for (var i = 0; i < questions.length; i++) {
-     userPicks.push($("[name=question"+i+"]:checked").val());
-
-    };
-    console.log(userPicks);
-
-    for(var i =0; i < questions.length; i++){
-      if (questions[i].answer === userPicks[i]) {
-        correctAnswer++;
-        console.log("Correct: " + correctAnswer + "| Wrong: " + wrongAnswer);
-      } else if (userPicks[i] === "undefined") {
-        wrongAnswer++;
-        console.log("Correct: " + correctAnswer + "| Wrong: " + wrongAnswer);
-      } else {
-        wrongAnswer++;
-        console.log("Correct: " + correctAnswer + "| Wrong: " + wrongAnswer);
-      }
-    }
   };
 
   function finishedGame(){
@@ -224,7 +202,7 @@ $(document).ready(function() {
     wrongAnswer = 0;
     currentQuestion = 0;
     userPicks = [];
-    questionTime = 40;
+    questionTime = 20;
     populatePage();
   }
 
@@ -233,14 +211,8 @@ $(document).ready(function() {
     populatePage();
   });
 
-  $("#button").on("click", function() {
-      stop();
-      answer();
-  });
-
   $(document).on("click", "#startOver", restart);
 
-
+  $(document).on("click", ".options-btn", answer);
 
       //alert(questions.question1.options[0]);
-});
