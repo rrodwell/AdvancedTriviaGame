@@ -214,7 +214,7 @@
   $(document).on("click", ".options-btn", answer);
 
 
-  //--------------Google Sign Test------------------//
+  //--------------Google Sign In ------------------//
 
   function onSignIn(googleUser) {
    var profile = googleUser.getBasicProfile();
