@@ -1,4 +1,4 @@
-console.login("hi!");
+console.log("hi!");
   var questions = [
 
     {
