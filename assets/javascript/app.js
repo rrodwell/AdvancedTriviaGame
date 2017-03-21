@@ -231,6 +231,9 @@
     console.log(error);
   }
   function renderButton() {
+    gapi.auth2.init({
+      client_id: '676416527258-kgb1jjtep2o1k90lvmi2v8pg3g0pau6d.apps.googleusercontent.com'
+    });
     gapi.signin2.render('g-signin2', {
       'scope': 'profile email',
       'width': 240,
@@ -242,9 +245,6 @@
     });
   }
   function signOut() {
-    gapi.auth2.init({
-      client_id: '676416527258-kgb1jjtep2o1k90lvmi2v8pg3g0pau6d.apps.googleusercontent.com'
-    });
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
       console.log('User signed out.');
