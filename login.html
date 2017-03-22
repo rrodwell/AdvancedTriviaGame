@@ -17,14 +17,23 @@
 		<link rel="stylesheet" type="text/css" href="assets/css/advancedStyle.css">
 	</head>
   <body>
+		<div class="container">
+			<div class="jumbotron">
+				<h1>Georgia Tech Football Trivia</h1>
+				<p>Test your knowledge of old and recent Yellow Jacket facts!</p>
+			</div>
+			<div class="container">
+		    <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+				<fb:login-button scope="public_profile,email" onlogin="checkLoginState();" class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="true">
+		    </fb:login-button>
+		    <div id="status"></div>
 
-		<fb:login-button scope="public_profile,email" onlogin="checkLoginState();" class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="true">
-    </fb:login-button>
-    <div id="status"></div>
+				<a href="login.html" onclick="signOut();">Sign out of Google</a>
 
-		<a href="login.html" onclick="signOut();">Sign out of Google</a>
+				<div class="fb-share-button" data-href="https://damp-inlet-31239.herokuapp.com" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdamp-inlet-31239.herokuapp.com%2F&amp;src=sdkpreparse">Share</a></div>
+			</div>
+		</div>	
 
 		<!-- Google Login -->
 		<script src="https://apis.google.com/js/platform.js" async defer></script>
