@@ -233,15 +233,16 @@
   function renderButton() {
     gapi.auth2.init({
       client_id: '676416527258-kgb1jjtep2o1k90lvmi2v8pg3g0pau6d.apps.googleusercontent.com'
-    });
-    gapi.signin2.render('g-signin2', {
-      'scope': 'profile email',
-      'width': 240,
-      'height': 50,
-      'longtitle': true,
-      'theme': 'dark',
-      'onsuccess': onSuccess,
-      'onfailure': onFailure
+    }).then( () => {
+        gapi.signin2.render('g-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
     });
   }
   function signOut() {
