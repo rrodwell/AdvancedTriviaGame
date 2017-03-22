@@ -250,4 +250,3 @@
       console.log('User signed out.');
     });
   }
-renderButton();
