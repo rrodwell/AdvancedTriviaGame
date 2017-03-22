@@ -21,6 +21,15 @@
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
     <a href="#" onclick="signOut();">Sign out</a>
 
+    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+    </fb:login-button>
+
+    <div id="status">
+    </div>
+
+
+
+
     <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
     <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
     <script type="text/javascript" src="assets/javascript/app.js"></script>
