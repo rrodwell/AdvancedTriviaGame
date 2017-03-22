@@ -326,3 +326,8 @@
           'Thanks for logging in, ' + response.name + '!';
       });
     }
+
+    FB.logout(function(response) {
+      // user is now logged out
+      console.log("User logged out of Facebook");
+    });
