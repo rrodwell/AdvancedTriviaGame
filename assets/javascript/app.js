@@ -326,9 +326,3 @@
           'Thanks for logging in, ' + response.name + '!';
       });
     }
-$('.fb-logout').on('click', function() {
-      FB.logout(function(response) {
-        // user is now logged out
-        console.log("User signed out of Facebook");
-      });
-});
