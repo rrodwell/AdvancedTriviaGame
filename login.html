@@ -19,15 +19,13 @@
   <body>
 
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
-    <a href="#" onclick="signOut();">Sign out of Google</a>
 
-    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+		<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
     </fb:login-button>
+    <div id="status"></div>
 
-    <div id="status">
-    </div>
+		<a href="#" onclick="signOut();">Sign out of Google</a>
 
-		<a href="#" onclick="signOutFB();">Sign out of Facebook</a>
 
 
 
